@@ -1,7 +1,7 @@
 class ProofFirstTruthEngine:
     def __init__(self):
         self.theorem_name = "SYNTACTIC ENTAILMENT LOGICAL ORDER REALIZATION THEOREM"
-        self.canonical_chain = "⌜Γ↝⊢ ↝ ⊨_p ⇝ T⌝"
+        self.canonical_chain = "⌜Γ ↝ ⊢ ↝ ⊨_p ⇝ T⌝"
         self.proofs = {}      # (gamma_tuple, psi) -> True
         self.realized = {}    # Tracks realizations downstream from Γ
         print(f"[{self.theorem_name}] Engine initialized with {self.canonical_chain}")
@@ -48,7 +48,7 @@ class ProofFirstTruthEngine:
 
     def confirm_truth(self, gamma, psi):
         """Full chain under new compact form: Γ ↝ ⊢ ↝ ⊨_p ↝ T"""
-        print("\n=== RUNNING FULL CHAIN: ⌜Γ↝⊢ ↝ ⊨_p ⇝ T⌝ ===")
+        print("\n=== RUNNING FULL CHAIN: ⌜Γ ↝ ⊢ ↝ ⊨_p ⇝ T⌝ ===")
         self.gamma_realizes(gamma, psi)   # Γ realizes in the first place
         self.prove(gamma, psi)
         self.realize(gamma, psi)
@@ -66,7 +66,7 @@ class ProofFirstTruthEngine:
             'starting_point': 'Γ realizes entailment in the first place',
             'realization_constraint': '↝ strictly downstream from Γ',
             'model_import': 'BLOCKED (⊨_s excluded)',
-            'canonical_forms': ['⌜Γ↝⊢ ↝ ⊨_p ⇝ T⌝', '⌜↝⊢⇝⊨_p⇝T⌝']
+            'canonical_forms': ['⌜Γ ↝ ⊢ ↝ ⊨_p ⇝ T⌝', '⌜↝⊢⇝⊨_p⇝T⌝']
         }
 
 
