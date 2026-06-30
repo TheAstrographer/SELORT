@@ -118,6 +118,9 @@ if __name__ == "__main__":
     
     gamma = ["P → Q", "P"]
     psi = "Q"
+
+    gamma = ["A ∧ B", "A"]
+    psi = "B"
     
     adapters = {
         "Lean 4": Lean4Adapter(),
