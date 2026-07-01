@@ -1,2 +1,2 @@
 # SELORT
-Joshua Christopher Ryan's Syntax Entailment Logical Order Realization Theorem
+Strict Logical Order for Artificial Intelligent truth-false verifications.
