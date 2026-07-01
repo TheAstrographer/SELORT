@@ -1,0 +1,44 @@
+Formal Setup (Python’s random module)Algorithm: Mersenne Twister (MT19937)
+Seed: Fixed integer s (e.g. 42)
+State: Internal 624-element array of 32-bit integers + index
+Output function: random.random() extracts and transforms the state into a float in [0.0, 1.0)
+
+Γ (Base Premises) contains:The import and seeding statement.
+The formal (or black-box) definition of the Mersenne Twister transition and tempering functions.
+The axiom that the generator is deterministic: same seed ⇒ identical sequence.
+
+Concrete Multi-Step Example (seed=42)Γ = {random.seed(42), Mersenne Twister definition, determinism axiom}Step
+ψ (Conclusion)
+Value (approx.)
+Status
+1 first random.random()
+0.6394267985
+⊢ TRUE
+2 second random.random()
+0.0250107552
+⊢ TRUE
+3 third random.random()
+0.2750293184
+⊢ TRUE
+4 fourth random.random()
+0.2232107381
+⊢ TRUE
+5 fifth random.random()
+0.7364712142
+⊢ TRUE
+6 sixth random.random()
+0.6766994874
+⊢ TRUE
+7 seventh random.random()
+0.8921795677
+⊢ TRUE
+8 eighth random.random()
+0.0869388326
+⊢ TRUE
+
+A multi-step PRNG sequence is not a source of primitive truth, but a derived syntactic object.
+It is realized step-by-step through strict proof-first ordering, fully consistent with the canonical chain ⌜Γ ↝ ⊢ ↝ ⊨_p ⇝ T⌝.
+The apparent randomness is an artifact of missing initial conditions (the seed), not a fundamental property. 
+Once Γ contains the seed and transition rules, the entire sequence verifies itself.
+
+
