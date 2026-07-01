@@ -1,0 +1,78 @@
+# All examples run under the locked proof-first chain
+
+1. Basic Logical Inference (Modus Ponens)python
+
+gamma = [r"P \to Q", r"P"]
+psi = r"Q"
+engine.confirm_truth(gamma, psi)
+
+Result: TRUE
+KaTeX: Γ={P→Q, P}⊢Q\Gamma = \{P \to Q,\ P\} \vdash Q\Gamma = \{P \to Q,\ P\} \vdash Q
+2. Arithmetic Definition (Exponentiation)python
+
+gamma = [r"\forall x\ (x^2 \triangleq x \times x)", r"6 \times 6 = 36"]
+psi = r"6^2 = 36"
+engine.confirm_truth(gamma, psi)
+
+Result: TRUE
+KaTeX: Γ⊢62=36\Gamma \vdash 6^2 = 36\Gamma \vdash 6^2 = 36
+ (via definitional unfolding)3. Basic Arithmetic Identitypython
+
+gamma = [r"\forall n\ (n + 0 = n)"]
+psi = r"5 + 0 = 5"
+engine.confirm_truth(gamma, psi)
+
+Result: TRUE
+KaTeX: Γ⊢5+0=5\Gamma \vdash 5 + 0 = 5\Gamma \vdash 5 + 0 = 5
+4. Conjunction Elimination (Stricter Syntactic Example)python
+
+gamma = [r"A \land B", r"A"]
+psi = r"B"
+engine.confirm_truth(gamma, psi)
+
+Result: TRUE
+KaTeX: {A∧B, A}⊢B\{A \land B,\ A\} \vdash B\{A \land B,\ A\} \vdash B
+ (by ∧\land\land
+-Elimination rule)5. Entailment from False Premises (Classic Example)python
+
+gamma = [r"\forall x\ (Bird(x) \to CanFly(x))", r"Bird(Penguin)"]
+psi = r"CanFly(Penguin)"
+engine.confirm_truth(gamma, psi)
+
+Result: TRUE
+Clarification: The engine confirms syntactic derivability from the given premises — not factual correctness in the real world.6. Logical Truth (Tautology — Empty Premises)python
+
+gamma = []  # No premises
+psi = r"P \lor \neg P"
+engine.confirm_truth(gamma, psi)
+
+Result: TRUE
+KaTeX: ⊢P∨¬P\vdash P \lor \neg P\vdash P \lor \neg P
+ (Law of Excluded Middle)7. Explosion from Contradiction (Ex Falso Quodlibet)python
+
+gamma = [r"P \land \neg P"]
+psi = r"Q"   # Anything follows
+engine.confirm_truth(gamma, psi)
+
+Result: TRUE
+KaTeX: {P∧¬P}⊢Q\{P \land \neg P\} \vdash Q\{P \land \neg P\} \vdash Q
+8. Multi-Step Conjunction Introductionpython
+
+gamma = [r"A", r"B", r"C"]
+psi = r"A \land B \land C"
+engine.confirm_truth(gamma, psi)
+
+Result: TRUE
+KaTeX: {A,B,C}⊢A∧B∧C\{A, B, C\} \vdash A \land B \land C\{A, B, C\} \vdash A \land B \land C
+9. Non-Entailment Example (Strict Rejection)python
+
+gamma = [r"2 + 2 = 4"]
+psi = r"2 + 2 = 5"
+engine.confirm_truth(gamma, psi)
+
+Result: FALSE
+(No syntactic proof exists from the given Γ)
+All examples are now:Strictly syntactic / proof-first
+Use proper KaTeX notation
+Clearly distinguish between logical entailment and factual truth
+Respect the locked chain ⌜Γ ↝ ⊢ ↝ ⊨_p ↝ T⌝
